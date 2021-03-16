@@ -1,0 +1,12 @@
+
+import os
+import arcpy
+
+from arcpy import env
+
+env.overwriteOutput = True
+env.workspace = "C:/arcgis/ArcTutor/Editing" #Cambia el texto entre comillas, por la ruta de tus mpk
+
+for mxd in arcpy.ListFiles("*.mxd"):
+    print "Packaging " + mxd
+    arcpy.PackageMap_management(mxd, os.path.splitext(mxd)[0] + '.mpk', "PRESERVE", "CONVERT_ARCSDE", "#", "ALL")

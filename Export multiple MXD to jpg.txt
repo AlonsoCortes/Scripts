@@ -1,0 +1,11 @@
+import arcpy, os 
+inputPath = r"E:\Google Drive\WORK\Tren Maya\02_Etapa"
+outputPath = r"E:\IMAGENES\ESCRITORIO\Mapas" 
+#Loop through each MXD file 
+for filename in os.listdir(inputPath):     
+	fullpath = os.path.join(inputPath, filename)     
+	if os.path.isfile(fullpath):         
+		if filename.lower().endswith(".mxd"):              
+	#Reference MXD and export             
+			mxd = arcpy.mapping.MapDocument(fullpath)             
+			arcpy.mapping.ExportToJPEG(mxd, outputPath + "\\" + filename + ".jpg") 

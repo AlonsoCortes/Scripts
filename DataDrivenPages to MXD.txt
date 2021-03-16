@@ -1,0 +1,9 @@
+import arcpy, os
+... mxdPath = r"E:\Google Drive\WORK\Tren Maya\02_Etapa\02_Centralidades y corredores.mxd"
+... mxd = arcpy.mapping.MapDocument(mxdPath)
+... mxdDir = os.path.dirname(mxdPath)
+... for pageNum in range(1, mxd.dataDrivenPages.pageCount + 1):
+...     mxd.dataDrivenPages.currentPageID = pageNum
+...     mxdName = os.path.join(mxdDir, "DDPMap" + str(pageNum) + ".mxd")
+...     mxd.saveACopy(mxdName)
+... del mxd
